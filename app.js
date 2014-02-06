@@ -13,6 +13,7 @@ var add = require('./routes/add');
 var editgoals = require('./routes/editgoals');
 var settings = require('./routes/settings');
 var addactivity = require('./routes/recordactivity');
+var editindividualgoal = require('./routes/editindividualgoal');
 // Example route
 // var user = require('./routes/user');
 
@@ -44,6 +45,7 @@ app.get('/add', add.addFriend);
 app.get('/editgoals', editgoals.view);
 app.get('/settings', settings.view);
 app.get('/addactivity', addactivity.view);
+app.get('/editindividual', editindividualgoal.view);
 // Example route
 // app.get('/users', user.list);
 

@@ -22,9 +22,9 @@ function submitClicked(e) {
 	var name = $("#name").val();
 	var target = $("#target").val();
 	if ((name != "") && (target != "")) {
-		$(".goalList").append('<div class="goal"><h3>' + name + ": " + target + '</h3> <button type="button" class="editGoalButton">Edit Goal</button> <button type="button" class="deleteGoalButton">Delete Goal</button> </div>');
+		$(".goalList").append('<div class="goal"><h3>' + name + ": " + target + '</h3> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> <button type="button" class="deleteGoalButton">Delete Goal</button> </div>');
 	
-		$(".editGoalButton").click(editGoalClicked);
+		//$(".editGoalButton").click(editGoalClicked);
 		$(".deleteGoalButton").click(deleteGoalClicked);
 	
 	}
