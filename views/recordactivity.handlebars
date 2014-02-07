@@ -1,8 +1,19 @@
 {{> header}}
 <div class="container">
 
-<h1>Edit Goals</h1>
+<h1>Record Activity</h1>
 
+	<form id="add_activity_form" role="form">
+	      <label for="activities"> Activity: </label>
+	      <select class="form-control" id="activity_select">
+	      	{{#each activities}}
+	        	<option value="{{activity}}">{{activity}}</option>
+	        {{/each}}
+	      </select>
+
+	      <label for="activities"> Hours: </label>
+	      <input type="text" id="hours"/>
+	</form>
 </div>
 
 </body>
