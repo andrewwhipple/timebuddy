@@ -9,7 +9,11 @@
 	
 	<h2>Current Goals:</h2>
 	<div class="goalList">
-		
+		{{#each activities}}
+			<div class="goal">
+				<h3>{{activity}}: {{goal}} hrs/week</h3> 
+				<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>'
+		{{/each}}
 	</div>
 	
 
