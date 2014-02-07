@@ -45,7 +45,7 @@ app.get('/recordactivity', recordactivity.view);
 app.get('/editgoals', editgoals.view);
 app.get('/settings', settings.view);
 app.get('/editindividual', editindividualgoal.view);
-//app.get('/addactivity', addactivity.view);
+app.get('/addactivity', addactivity.view);
 // Example route
 // app.get('/users', user.list);
 

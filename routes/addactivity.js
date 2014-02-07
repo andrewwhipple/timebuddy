@@ -1,6 +1,6 @@
 var data = require("../data.json");
 
-exports.addFriend = function(req, res) {    
+exports.view= function(req, res) {    
 	res.render("addactivity.handlebars");
 
  }
