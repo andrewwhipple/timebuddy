@@ -1,7 +1,40 @@
 {{> header}}
-<div class="container">
 
-<h1>Edit Goals</h1>
+
+
+<div class="container">
+	<div class="jumbotron">
+		<h1>View And Edit Your Goals!</h1>
+	</div>
+	
+	<h2>Current Goals:</h2>
+	<div class="goalList">
+		
+	</div>
+	
+
+
+	<form id="addActivity" role="form" method="get" action="/add">
+		<h3>Add an Activity</h3>
+	 	<div class="form-group">
+		   <label for="name">Activity Name:</label>
+		   <input type="text" class="form-control" id="name" placeholder="ex: Sleep" name="Activity Name">
+	 	 </div>
+	 	 <div class="form-group">
+  	 		<label for="target">Target (hrs per week):</label>
+  			<input type="text" class="form-control" id="target" placeholder="ex: 56" name="description">
+		</div>
+		<input type="submit" id="submitBtn" class="button" value="Add Activity"></input>
+	</form>
+
+	<a href="/">Back to home</a>
+
+</div>
+
+<script src="/js/jquery-1.11.0.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/goals-page.js"></script>
+
 
 </div>
 
