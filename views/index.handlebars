@@ -1,12 +1,17 @@
 {{> header}}
 <div class="container">
 
-<h1>Welcome!</h1>
+	<h1>Welcome!</h1>
 
+	<table class= "table">
+		<tr> <th> Activity </th> <th> Today (hrs) </th> <th> Goal (hrs) </th>
+		
+		{{#each activities}}
+		<tr> <td> {{activity}} </td> <td> {{hours}} </td> <td> {{goal}}</td>
+		{{/each}}
 
+	</table>
 </div>
-
-
 
 </body>
 </html>
