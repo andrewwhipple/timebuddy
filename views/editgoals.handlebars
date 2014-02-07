@@ -3,15 +3,15 @@
 
 
 <div class="container">
-	<div class="jumbotron">
-		<h1>View And Edit Your Goals!</h1>
-	</div>
+	
+	<h1>View And Edit Your Goals!</h1>
+	
 	
 	<h2>Current Goals:</h2>
 	<div class="goalList">
 		{{#each activities}}
 			<div class="goal">
-				<h3>{{activity}}: {{goal}} hrs/week</h3> 
+				<h4>{{activity}}: {{goal}} hrs/week</h4> 
 				<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>'
 		{{/each}}
 	</div>
