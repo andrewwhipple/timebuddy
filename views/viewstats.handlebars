@@ -18,7 +18,7 @@
         var data = google.visualization.arrayToDataTable([
           ['Activity', 'Target', 'Actual'],
           {{#each activities}}
-			  ['{{activity}}', {{hours}}, {{goal}}],
+			  ['{{activity}}', {{goal}}, {{hours}}],
 			  
 		  {{/each}}
         ]);
