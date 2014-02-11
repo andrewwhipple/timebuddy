@@ -3,10 +3,10 @@
 
 <h1>Record Activity</h1>
 
-	<form id="record_activity_form" class = "form-horizontal" role="form">
+	<form id="record_activity_form" class = "form-horizontal" role="form" action="/recordactivitydata"  method="get">
 		<div class="form-group">
 	      <label for="activities" class="col-sm-2 control-label"> Activity: </label>
-	      <select id="activity_select">
+	      <select id="activity" name = "activity">
 	      	{{#each activities}}
 	        	<option value="{{activity}}">{{activity}}</option>
 	        {{/each}}
@@ -15,8 +15,12 @@
 
 		<div class="form-group">
 	      <label for="hours"  class="col-sm-2 control-label"> Hours: </label>
-	      <input type="text" id="hours" />
-	      </div>
+	      <input type="text" id="hours" name = "hours"/>
+	    </div>
+
+	    <div class="form-group">
+	    	<input type="submit" id="submitBtn" class="btn btn-default" value="Record Activity"></input>
+	    </div>
 	</form>
 </div>
 
