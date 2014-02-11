@@ -17,10 +17,10 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Activity', 'Target', 'Actual'],
-          ['Facebook',  4, 10],
-          ['Sleep',  17, 2],
-          ['CS147',  2, 4],
-          ['SymSys 100',  3, 3]
+          {{#each activities}}
+			  ['{{activity}}', {{hours}}, {{goal}}],
+			  
+		  {{/each}}
         ]);
 
         var options = {
