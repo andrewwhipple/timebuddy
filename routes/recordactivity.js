@@ -1,7 +1,9 @@
 var data = require('../data.json');
 
 exports.view = function(req, res) {    
-	console.log("Javascript linked!");
+
+	// Your code goes here
+	res.render('recordactivity.handlebars', data);
 	
 	var activity = req.query.activity;
 	var hours = req.query.hours;
