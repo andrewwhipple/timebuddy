@@ -1,7 +1,26 @@
 {{> header}}
 <div class="container">
 
-	<h1>Welcome!</h1>
+	<h1>Recent activities:</h1>
+
+
+	{{#each activities}}
+	<div class="well well-sm">
+		<div class = "well-text">{{activity}}: 
+		{{hours}} hr(s) 
+		</div>
+	</div>
+	{{/each}}
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">
+    Record an activity
+  </button>
+</div>
+
+
+<!--
 
 	<table class= "table">
 		<tr> <th> Activity </th> <th> Today (hrs) </th> <th> Goal (hrs) </th>
@@ -15,7 +34,7 @@
 
 
 
-<!--This is for progress bar if we want to have it displayed next to each item...still need to figure that out. Also want to add "Add activity" Button
+This is for progress bar if we want to have it displayed next to each item...still need to figure that out. Also want to add "Add activity" Button
 <div class="progress">
   <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
     <span class="sr-only">60% Complete</span>
