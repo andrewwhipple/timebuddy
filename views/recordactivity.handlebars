@@ -2,8 +2,12 @@
 <div class="container">
 
 <h1>Record Activity</h1>
+	
+	<div id='message'>
+	<!-- This is where any messages from the controller will go --> 
+	</div>
 
-	<form id="record_activity_form" class = "form-horizontal" role="form" action="/recordactivitydata"  method="get">
+	<form id="record_activity_form" class = "form-horizontal" role="form">
 		<div class="form-group">
 	      <label for="activities" class="col-sm-2 control-label"> Activity: </label>
 	      <select id="activity" name = "activity">
@@ -26,6 +30,10 @@
 	
 	{{> homebtn}}
 </div>
+
+<script src="/js/jquery-1.11.0.js"></script>
+<script src="/js/bootstrap.js"></script>
+<script src="/js/recordactivity.js"></script>
 
 </body>
 </html>

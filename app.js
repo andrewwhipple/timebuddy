@@ -14,8 +14,8 @@ var editgoals = require('./routes/editgoals');
 var settings = require('./routes/settings');
 var recordactivity = require('./routes/recordactivity');
 var editindividualgoal = require('./routes/editindividualgoal');
-var recordactivitydata = require('./routes/recordactivitydata');
 var viewstats = require('./routes/viewstats');
+var writeactivitydata = require('./routes/writeactivitydata');
 // Example route
 // var user = require('./routes/user');
 
@@ -48,8 +48,8 @@ app.get('/editgoals', editgoals.view);
 app.get('/settings', settings.view);
 app.get('/editindividual', editindividualgoal.view);
 app.get('/addactivity', addactivity.view);
-app.get('/recordactivitydata', recordactivitydata.recordactivity);
 app.get('/stats', viewstats.view);
+app.get('/writeactivitydata', writeactivitydata.writeactivitydata);
 // Example route
 // app.get('/users', user.list);
 
