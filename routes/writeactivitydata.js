@@ -15,10 +15,14 @@ exports.writeactivitydata = function(req, res) {
 
 		if(activity['activity'] == activitytorecord ){
 			activity['hours'] = parseFloat(hourstorecord) + parseFloat(activity['hours']);
-			result['message'] = "Successfully Recorded!";
 			result['activity'] = activity['activity'];
 			result['hours'] = activity['hours'];
-			result['goal'] = activity['goal'];
+			result['goal'] = activity['goal'];			
+			var percentofgoal =  parseFloat(hourstorecord) / parseFloat(result['goal']) * 100;
+			result['message'] = "<b> ACTIVITY </b> " + result['activity'] 
+				+ " <br><b> THIS WEEK </b> " + result['hours'] + " hours"
+				+" <br><b> GOAL </b>  " + result['goal'] + " hours/week </br>" 
+				+" <br><em><t>You are at <b>" + percentofgoal + " % </b> of your weekly goal <br> </em> <br> ";
 
 			console.log("about to send result");
 			console.log(result);

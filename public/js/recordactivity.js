@@ -20,31 +20,10 @@ function submitClicked(e){
 
 	var parameters = {'activity': activity, 'hours': hours };
 	$.get("/writeactivitydata", parameters, writedata);
-	/*
-	$.ajax({
-	    url: "/writeactivitydata", // + '?callback=?' --I realized this is not necessary with dataType: 'jsonp'
-	    data: parameters,
-	    error: function(xhr, status, error) {
-			console.log("int eh error funtion aoief");
-	        },
-	    success: function(results){
-	    	console.log("sucess function");
-	        writedata(results);
-	    }
-	}).done(function(data){
-		console.log("made it to success");
-	}).fail(function(data){
-    	console.log("error function");
-        console.log(xhr);
-        console.log(status);
-        console.log(error);
-	});
-*/
+
 }
 
 function writedata(results){
-	console.log("made it to the results writedata!!");
 	var message = results['message'];
-	console.log("Here's the message: " + message);
 	$('#message').html(message);
 }
