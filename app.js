@@ -16,6 +16,7 @@ var recordactivity = require('./routes/recordactivity');
 var editindividualgoal = require('./routes/editindividualgoal');
 var viewstats = require('./routes/viewstats');
 var writeactivitydata = require('./routes/writeactivitydata');
+var addactivitydata = require('./routes/addactivitydata');
 // Example route
 // var user = require('./routes/user');
 
@@ -50,6 +51,7 @@ app.get('/editindividual', editindividualgoal.view);
 app.get('/addactivity', addactivity.view);
 app.get('/stats', viewstats.view);
 app.get('/writeactivitydata', writeactivitydata.writeactivitydata);
+app.get('/addactivitydata', addactivitydata.addActivity);
 // Example route
 // app.get('/users', user.list);
 
