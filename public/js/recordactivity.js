@@ -7,11 +7,20 @@ $(document).ready(function() {
 })
 
 function submitClicked(e){
+	e.preventDefault();
+	
 	var activity = $("#activity").val();
 	var hours = $("#hours").val();
 
-	var parameters = {activity: activity, hours: hours };
-	//$.get("/writeactivitydata", parameters, writedata);
+	if(hours == ""){
+		$('#message').html("Please enter the number of hours you spent on this activity");
+		return;
+	}
+
+
+	var parameters = {'activity': activity, 'hours': hours };
+	$.get("/writeactivitydata", parameters, writedata);
+	/*
 	$.ajax({
 	    url: "/writeactivitydata", // + '?callback=?' --I realized this is not necessary with dataType: 'jsonp'
 	    data: parameters,
@@ -30,6 +39,7 @@ function submitClicked(e){
         console.log(status);
         console.log(error);
 	});
+*/
 }
 
 function writedata(results){
