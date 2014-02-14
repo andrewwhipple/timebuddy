@@ -43,7 +43,8 @@ function submitClicked(e) {
 
 function writeData(results) {
 	console.log("STUFF WORKS YAY");
-	
+	$(".goalList").append('<div class="goal"><h4>' + results.activity + ": " + results.goal + ' hrs/week</h4> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>');
+	console.log($(".goalList").length);
 }
 function deleteGoalClicked(e) {
 	e.preventDefault();
