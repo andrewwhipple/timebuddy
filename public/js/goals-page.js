@@ -43,9 +43,12 @@ function submitClicked(e) {
 
 function writeData(results) {
 	console.log("STUFF WORKS YAY");
-	$(".goalList").append('<div class="goal"><h4>' + results.activity + ": " + results.goal + ' hrs/week</h4> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>');
+	//$(".goalList").append('<div class="goal"><h4>' + results.activity + ": " + results.goal + ' hrs/week</h4> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>');
+	$(".goalList").append('<div class="well well-sm"> <div class = "well-text">' + results.activity + ': ' + results.goal + ' hrs/week</div></div>');
 	console.log($(".goalList").length);
 }
+
+
 function deleteGoalClicked(e) {
 	e.preventDefault();
 	$(this).closest(".goal").remove();

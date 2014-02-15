@@ -9,12 +9,28 @@
 	
 	<h2>Current Goals:</h2>
 	<div class="goalList">
-		{{#each activities}}
+		
+		<!--{{#each activities}}
 			<div class="goal">
-				<h4>{{activity}}: {{goal}} hrs/week</h4> 
+				<div class"well well-sm">
+				<div class="well-text">{{activity}}: {{goal}} hrs/week</div> </div>
 				<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>
 		{{/each}}
+	
+	 -->
+	
+	{{#each activities}}
+	<div class="well well-sm">
+		<div class = "well-text">{{activity}}: 
+		{{goal}} hrs/week
 	</div>
+		
+	</div>
+	<!--<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> -->
+	
+	{{/each}}
+	</div>
+	
 	
 	{{> addactivityform}}
 
