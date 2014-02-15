@@ -12,10 +12,9 @@ var index = require('./routes/index');
 var addactivity = require('./routes/addactivity');
 var editgoals = require('./routes/editgoals');
 var settings = require('./routes/settings');
-var recordactivity = require('./routes/recordactivity');
 var editindividualgoal = require('./routes/editindividualgoal');
 var viewstats = require('./routes/viewstats');
-var writeactivitydata = require('./routes/writeactivitydata');
+var addtime = require('./routes/addtime');
 var addactivitydata = require('./routes/addactivitydata');
 // Example route
 // var user = require('./routes/user');
@@ -44,13 +43,12 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
-app.get('/recordactivityview', recordactivity.view);
 app.get('/editgoals', editgoals.view);
 app.get('/settings', settings.view);
 app.get('/editindividual', editindividualgoal.view);
 app.get('/addactivity', addactivity.view);
 app.get('/stats', viewstats.view);
-app.get('/writeactivitydata', writeactivitydata.writeactivitydata);
+app.get('/addtime', addtime.addtime);
 app.get('/addactivitydata', addactivitydata.addActivity);
 // Example route
 // app.get('/users', user.list);
