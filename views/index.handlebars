@@ -2,18 +2,17 @@
 
 
 <div class="container">
-	<h1>Recent activities:</h1>
 
 	<div class = 'container' id='message'/></div>
 
 	<div class='container'>
 		{{#each activities}}
-		<div class="row-fluid well well-sm activity" id="{{activity}}">
-				<div class = "span8"> {{activity}} </div>
-				<div class = "span2" id='timespent'> {{hours}} / {{goal}} hrs </div>
-				<div class = "span2">
-					<form role='form'> 
-						<div class='time form-group col-sm-'>
+		<div class="row activity well well-sm" id="{{activity}}">
+				<div class='well-text inline activityname'> {{activity}} </div>
+				<div  class='inline' id='timespent'> {{hours}} / {{goal}} hrs </div>
+				<div class='inline addhours' >
+					<form class ='inline' role='form'> 
+						<div class='inline time form-group col-sm-'>
 							<label class="control-label" for='text'> Add Hours </label> 
 							<input type="text" id="time" placeholder='0.00'></input>
 						</div>
