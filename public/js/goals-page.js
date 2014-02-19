@@ -5,12 +5,15 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	initializePage();
+	$('#addactivityform').hide();
+	$(".button").click(submitClicked);	
+
+	$(".editGoalButton").click(editGoalClicked);
+	$("#addactivityformbtn").click(addactivityformbtn);
 })
 
-$(".button").click(submitClicked);	
 
-$(".editGoalButton").click(editGoalClicked);
-$(".deleteGoalButton").click(deleteGoalClicked);
+
 /*
  * Function that is called when the document is ready.
  */
@@ -19,7 +22,20 @@ function initializePage() {
 }
 
 
+function addactivityformbtn(e){
+	e.preventDefault();
 
+	console.log("made it into");
+
+	$( "#addactivityform" ).toggle(function() {
+		console.log("here1");
+	  $('#addActivity').hide();
+	}, function() {
+		console.log("here2");
+
+	  $('#addActivity').show();
+	});
+}
 
 function submitClicked(e) {
 	console.log("CLICKED");

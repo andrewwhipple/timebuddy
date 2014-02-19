@@ -1,10 +1,32 @@
 {{> header}}
-
-
+<style>
+.addactivityform{
+	padding:20px;
+}
+</style>
 
 <div class="container">
 	
 	<h2>Current Targets:</h2>
+	<div class='container'>
+		<a href='#' id='addactivityformbtn'><span class="glyphicon glyphicon-plus submitBtn"></span></a>
+		<label for="addactivityformbtn">Add New Target</label>
+	</div>
+
+	<div class='container addactivityform well' id='addactivityform'>
+		<form id="addActivity" role="form" method="get" action="/add">
+			<h3>Add New Target</h3>
+		 	<div class="form-group">
+			   <label for="name">Activity Name:</label>
+			   <input type="text" class="form-control" id="name" placeholder="ex: Sleep" name="Activity Name">
+		 	 </div>
+		 	 <div class="form-group">
+			 		<label for="target">Target (hrs per week):</label>
+					<input type="text" class="form-control" id="target" placeholder="ex: 56" name="description">
+			</div>
+			<input type="submit" id="submitBtn" class="btn btn-primary" value="Add Activity"></input>
+		</form>
+	</div>
 
 	<div class="goalList">
 		
@@ -34,7 +56,7 @@
 	<div class='container' id='message'>
 		
 	</div>
-	{{> addactivityform}}
+
 
 	{{> homebtn}}
 	
