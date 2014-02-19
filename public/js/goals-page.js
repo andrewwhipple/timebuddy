@@ -8,6 +8,8 @@ $(document).ready(function() {
 })
 
 $(".button").click(submitClicked);	
+
+$(".editGoalButton").click(editGoalClicked);
 /*
  * Function that is called when the document is ready.
  */
@@ -84,16 +86,12 @@ function deleteGoalClicked(e) {
 function editGoalClicked(e) {
 	e.preventDefault();
 	console.log("CLICKED SON");
+	console.log($(this).closest(".well-text").length);
+	$(this).closest(".well-text").append('<form class ="inline" role="form"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><span class="glyphicon glyphicon-plus submitBtn"></span></a></form>');
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number
 	//delete the form
-	var target = "0";
-	var name = "Sleep";
-	$(this).closest(".goal").html('<div class="goal"><h3>' + name + ": " + target + '</h3> <button type="button" class="editGoalButton">Edit Goal</button> <button type="button" class="deleteGoalButton">Delete Goal</button> </div>');
-	//replace the html w/ the same, but a new "target"
-
-	$(".editGoalButton").click(editGoalClicked);
-	$(".deleteGoalButton").click(deleteGoalClicked);	
+	
 	
 }
