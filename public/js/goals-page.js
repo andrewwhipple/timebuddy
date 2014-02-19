@@ -103,7 +103,9 @@ function editGoalClicked(e) {
 	e.preventDefault();
 	console.log("CLICKED SON");
 	console.log($(this).closest(".well-text").length);
-	$(this).closest(".well-text").append('<form class ="inline" role="form"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><span class="glyphicon glyphicon-plus submitBtn"></span></a></form>');
+	$('#editForm').remove();
+	
+	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><span class="glyphicon glyphicon-plus submitBtn"></span></a></form>');
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number
