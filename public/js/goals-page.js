@@ -10,6 +10,7 @@ $(document).ready(function() {
 $(".button").click(submitClicked);	
 
 $(".editGoalButton").click(editGoalClicked);
+$(".deleteGoalButton").click(deleteGoalClicked);
 /*
  * Function that is called when the document is ready.
  */
@@ -72,14 +73,15 @@ function writeData(results) {
 	$('#message').addClass("alert alert-success");
 	$('#message').html('Activity added successfully!');
 	
-	$(".goalList").append('<div class="well well-sm"> <div class = "well-text">' + results.activity + ': ' + results.goal + ' hrs/week</div></div>');
+	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: ' + results.goal + ' hrs/week<button type="button" class="editGoalButton">Edit Goal</button><div class="goal"></div></div>');
 	console.log($(".goalList").length);
+	$(".editGoalButton").click(editGoalClicked);
 }
 
 
 function deleteGoalClicked(e) {
 	e.preventDefault();
-	$(this).closest(".goal").remove();
+	console.log("Delete clicked!");
 		
 }
 
@@ -89,11 +91,19 @@ function editGoalClicked(e) {
 	console.log($(this).closest(".well-text").length);
 	$('#editForm').remove();
 	
-	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><span class="glyphicon glyphicon-plus submitBtn"></span></a></form>');
+	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
+	$(".deleteGoalButton").click(deleteGoalClicked);
+	$(".cancelButton").click(cancelClicked);
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number
 	//delete the form
 	
+	
+}
+
+function cancelClicked(e) {
+	e.preventDefault();
+	$('#editForm').remove();
 	
 }
