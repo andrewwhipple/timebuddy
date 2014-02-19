@@ -8,7 +8,7 @@ $(document).ready(function() {
 	$('#addactivityform').hide();
 	$(".button").click(submitClicked);	
 
-	$(".editGoalButton").click(editGoalClicked);
+	$("#submitBtn").click(submitClicked);
 	$("#addactivityformbtn").click(addactivityformbtn);
 })
 
