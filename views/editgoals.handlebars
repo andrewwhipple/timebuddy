@@ -4,10 +4,8 @@
 
 <div class="container">
 	
-	<h1>Edit Targets!</h1>
-	
-	
 	<h2>Current Targets:</h2>
+
 	<div class="goalList">
 		
 		<!--{{#each activities}}
@@ -23,6 +21,8 @@
 	<div class="well well-sm">
 		<div class = "well-text">{{activity}}: 
 		{{goal}} hrs/week
+		<button type="button" class="editGoalButton">Edit Goal</button>
+		<div class="goal"></div>
 	</div>
 		
 	</div>
@@ -31,10 +31,17 @@
 	{{/each}}
 	</div>
 	
-	
+	<div class='container' id='message'>
+		
+	</div>
 	{{> addactivityform}}
 
 	{{> homebtn}}
+	
+	<br>
+	<br>
+	<br>
+	<br>
 
 </div>
 
