@@ -141,8 +141,16 @@ function submitGoalClicked(e) {
 	var name = $(this).closest(".well-text").attr('id');
 	console.log(name);
 	var time = $("#editForm").find("#time").val();
-	var parameters = {'activity': name, 'time': time};
-	$.get('/editindividual', parameters, updateGoal);
+	var hasTime = checkInput(time);
+	if (hasTime) {
+		var parameters = {'activity': name, 'time': time};
+		$.get('/editindividual', parameters, updateGoal);
+	} else {
+		$('#message').removeClass();
+		$('#message').addClass("alert alert-warning");
+		$('#message').html("Please enter the amount of time you plan to spend on this activity.");
+		return;
+	}
 	
 }
 
