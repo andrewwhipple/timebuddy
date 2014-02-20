@@ -126,11 +126,30 @@ function editGoalClicked(e) {
 	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
 	$(".deleteGoalButton").click(deleteGoalClicked);
 	$(".cancelButton").click(cancelClicked);
+	$(".submitGoalButton").click(submitGoalClicked);
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number
 	//delete the form
 	
+	
+}
+
+function submitGoalClicked(e) {
+	e.preventDefault();
+	console.log("Submit Goal Clicked!");
+	var name = $(this).closest(".well-text").attr('id');
+	console.log(name);
+	var time = $("#editForm").find("#time").val();
+	var parameters = {'activity': name, 'time': time};
+	$.get('/editindividual', parameters, updateGoal);
+	
+}
+
+function updateGoal(results) {
+	$('#message').removeClass();
+	$('#message').addClass("alert alert-success");
+	$('#message').html(results['activity'] + ' changed from ' + results['oldTarget'] + 'hrs to ' + results['newTarget'] + 'hrs.');
 	
 }
 

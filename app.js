@@ -46,7 +46,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/editgoals', editgoals.view);
 app.get('/settings', settings.view);
-app.get('/editindividual', editindividualgoal.view);
+app.get('/editindividual', editindividualgoal.newTarget);
 app.get('/addactivity', addactivity.view);
 app.get('/stats', viewstats.view);
 app.get('/addtime', addtime.addtime);
