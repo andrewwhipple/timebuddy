@@ -10,6 +10,8 @@ $(document).ready(function() {
 
 	$("#submitBtn").click(submitClicked);
 	$("#addactivityformbtn").click(addactivityformbtn);
+	$(".editGoalButton").click(editGoalClicked);
+	
 })
 
 
@@ -89,7 +91,7 @@ function writeData(results) {
 	$('#message').addClass("alert alert-success");
 	$('#message').html('Activity added successfully!');
 	
-	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: ' + results.goal + ' hrs/week<button type="button" class="editGoalButton">Edit Goal</button><div class="goal"></div></div>');
+	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: ' + results.goal + ' hrs/week<button type="button" class="editGoalButton">Edit Target</button><div class="goal"></div></div>');
 	console.log($(".goalList").length);
 	$(".editGoalButton").click(editGoalClicked);
 }
@@ -98,7 +100,21 @@ function writeData(results) {
 function deleteGoalClicked(e) {
 	e.preventDefault();
 	console.log("Delete clicked!");
+	var name = $(this).closest(".well-text").attr('id');
+	console.log(name);
+	var parameters = {'activity': name};
+	$.get('/deletegoal', parameters, deleteData);
+	$(this).closest(".well-sm").remove();
 		
+}
+
+function deleteData(results) {
+	console.log("And now we're here!");
+	$('#message').removeClass();
+	$('#message').addClass("alert alert-success");
+	$('#message').html(results['activity'] + ' removed successfully.');
+	
+	
 }
 
 function editGoalClicked(e) {
