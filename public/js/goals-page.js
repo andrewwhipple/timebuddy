@@ -91,7 +91,7 @@ function writeData(results) {
 	$('#message').addClass("alert alert-success");
 	$('#message').html('Activity added successfully!');
 	
-	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: ' + results.goal + ' hrs/week<button type="button" class="editGoalButton">Edit Target</button><div class="goal"></div></div>');
+	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: <div class="inline" id="target">' + results.goal + '</div> hrs/day <button type="button" class="editGoalButton">Edit Target</button><div class="goal"></div></div>');
 	console.log($(".goalList").length);
 	$(".editGoalButton").click(editGoalClicked);
 }
@@ -123,7 +123,7 @@ function editGoalClicked(e) {
 	console.log($(this).closest(".well-text").length);
 	$('#editForm').remove();
 	
-	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
+	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> How much time do you want to spend on this per day? </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
 	$(".deleteGoalButton").click(deleteGoalClicked);
 	$(".cancelButton").click(cancelClicked);
 	$(".submitGoalButton").click(submitGoalClicked);
@@ -158,7 +158,11 @@ function updateGoal(results) {
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
 	$('#message').html(results['activity'] + ' changed from ' + results['oldTarget'] + 'hrs to ' + results['newTarget'] + 'hrs.');
-	
+	$('#editForm').remove();
+
+	var activitydiv = $("#"+results['activity']);
+	console.log(activitydiv);
+	$(activitydiv).find("#target").text(results['newTarget']);
 }
 
 function cancelClicked(e) {
