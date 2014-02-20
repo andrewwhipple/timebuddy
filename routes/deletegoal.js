@@ -9,7 +9,7 @@ exports.delete = function(req, res) {
 		console.log(activity);
 		if (activity['activity'] == activityToDelete) {
 			console.log(activities['activity']);
-			delete activities[i];
+			activities.splice(i, 1);
 			console.log("COol looky where I made it!");
 			
 		}
