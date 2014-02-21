@@ -38,6 +38,7 @@ function success(results){
 	var activitydiv = $("#"+results['activity']);
 	console.log(activitydiv);
 	$(activitydiv).find("#timespent").text(results['hours'] +" / "+ results['goal'] + " hrs");
+	$(activitydiv).find("#progress_bar").css('width', (results['hours']/results['goal']*100)+'%');
 }
 
 function checkInput(time){
