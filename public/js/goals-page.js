@@ -45,6 +45,7 @@ function submitClicked(e) {
 	var name = $("#name").val();
 	var target = $("#target").val();
 	var hasTime = checkInput(target);
+	console.log(name);
 	if (name == "") {
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
@@ -59,6 +60,7 @@ function submitClicked(e) {
 	}
 	if ((name != "") && (target != "")) {
 		//$(".goalList").append('<div class="goal"><h4>' + name + ": " + target + '</h4> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>');
+		console.log("made it into clicker");
 		var parameters = {'activity': name, 'hours': 0, 'goal': target};
 		$.get('/addactivitydata', parameters, writeData);
 		//$(".editGoalButton").click(editGoalClicked);

@@ -1,5 +1,4 @@
-{
-	"activities": [
+[
 		{
 			"activity": "facebook",
 			"hours": 0.5,
@@ -16,4 +15,3 @@
 			"goal" : 3		
 		}
 	]
-}
