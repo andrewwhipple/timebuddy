@@ -10,6 +10,8 @@ $(document).ready(function() {
 
 	$("#submitBtn").click(submitClicked);
 	$("#addactivityformbtn").click(addactivityformbtn);
+	$(".editGoalButton").click(editGoalClicked);
+	
 })
 
 
@@ -89,7 +91,7 @@ function writeData(results) {
 	$('#message').addClass("alert alert-success");
 	$('#message').html('Activity added successfully!');
 	
-	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: ' + results.goal + ' hrs/week<button type="button" class="editGoalButton">Edit Goal</button><div class="goal"></div></div>');
+	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: <div class="inline" id="target">' + results.goal + '</div> hrs/day <button type="button" class="editGoalButton">Edit Target</button><div class="goal"></div></div>');
 	console.log($(".goalList").length);
 	$(".editGoalButton").click(editGoalClicked);
 }
@@ -98,7 +100,21 @@ function writeData(results) {
 function deleteGoalClicked(e) {
 	e.preventDefault();
 	console.log("Delete clicked!");
+	var name = $(this).closest(".well-text").attr('id');
+	console.log(name);
+	var parameters = {'activity': name};
+	$.get('/deletegoal', parameters, deleteData);
+	$(this).closest(".well-sm").remove();
 		
+}
+
+function deleteData(results) {
+	console.log("And now we're here!");
+	$('#message').removeClass();
+	$('#message').addClass("alert alert-success");
+	$('#message').html(results['activity'] + ' removed successfully.');
+	
+	
 }
 
 function editGoalClicked(e) {
@@ -107,15 +123,46 @@ function editGoalClicked(e) {
 	console.log($(this).closest(".well-text").length);
 	$('#editForm').remove();
 	
-	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> New Target Hours/week </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
+	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> How much time do you want to spend on this per day? </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
 	$(".deleteGoalButton").click(deleteGoalClicked);
 	$(".cancelButton").click(cancelClicked);
+	$(".submitGoalButton").click(submitGoalClicked);
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number
 	//delete the form
 	
 	
+}
+
+function submitGoalClicked(e) {
+	e.preventDefault();
+	console.log("Submit Goal Clicked!");
+	var name = $(this).closest(".well-text").attr('id');
+	console.log(name);
+	var time = $("#editForm").find("#time").val();
+	var hasTime = checkInput(time);
+	if (hasTime) {
+		var parameters = {'activity': name, 'time': time};
+		$.get('/editindividual', parameters, updateGoal);
+	} else {
+		$('#message').removeClass();
+		$('#message').addClass("alert alert-warning");
+		$('#message').html("Please enter the amount of time you plan to spend on this activity.");
+		return;
+	}
+	
+}
+
+function updateGoal(results) {
+	$('#message').removeClass();
+	$('#message').addClass("alert alert-success");
+	$('#message').html(results['activity'] + ' changed from ' + results['oldTarget'] + 'hrs to ' + results['newTarget'] + 'hrs.');
+	$('#editForm').remove();
+
+	var activitydiv = $("#"+results['activity']);
+	console.log(activitydiv);
+	$(activitydiv).find("#target").text(results['newTarget']);
 }
 
 function cancelClicked(e) {

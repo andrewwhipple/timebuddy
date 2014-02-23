@@ -14,6 +14,7 @@ var editindividualgoal = require('./routes/editindividualgoal');
 var viewstats = require('./routes/viewstats');
 var addtime = require('./routes/addtime');
 var addactivitydata = require('./routes/addactivitydata');
+var deletegoal = require('./routes/deletegoal');
 // Example route
 // var user = require('./routes/user');
 
@@ -42,10 +43,11 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/editgoals', editgoals.view);
-app.get('/editindividual', editindividualgoal.view);
+app.get('/editindividual', editindividualgoal.newTarget);
 app.get('/stats', viewstats.view);
 app.get('/addtime', addtime.addtime);
 app.get('/addactivitydata', addactivitydata.addActivity);
+app.get('/deletegoal', deletegoal.delete);
 // Example route
 // app.get('/users', user.list);
 

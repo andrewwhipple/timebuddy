@@ -1,0 +1,19 @@
+{
+	"activities": [
+		{
+			"activity": "facebook",
+			"hours": 0.5,
+			"goal" : 1
+		},
+		{
+			"activity": "exercise",
+			"hours": 0.5,
+			"goal" : 1		
+		},
+		{
+			"activity": "homework",
+			"hours": 1,
+			"goal" : 3		
+		}
+	]
+}

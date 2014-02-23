@@ -46,9 +46,9 @@
 	
 	{{#each activities}}
 	<div class="well well-sm">
-		<div class = "well-text"><div class="inline" id="activity">{{activity}}</div>: 
-		{{goal}} hrs/week
-		<button type="button" class="editGoalButton">Edit Goal</button>
+		<div class = "well-text" id={{activity}}><div class="inline" id="activity">{{activity}}</div>: 
+		<div class="inline" id="target">{{goal}}</div> hrs/day
+		<button type="button" class="editGoalButton">Edit Target</button>
 		<div class="goal"></div>
 	</div>
 		

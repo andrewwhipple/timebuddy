@@ -29,6 +29,10 @@
 		<div class="row activity well well-sm" id="{{activity}}">
 				<div class='well-text inline activityname'> {{activity}} </div>
 				<div  class='inline' id='timespent'> {{hours}} / {{goal}} hrs </div>
+				<div class="progress">
+  					<div id="progress_bar" class="progress-bar" role="progressbar" style="width: {{hours}}%">
+  						</div>
+					</div>
 				<div class='inline addhours' >
 					<form class ='inline' role='form'> 
 						<div class='inline time form-group col-sm-'>
