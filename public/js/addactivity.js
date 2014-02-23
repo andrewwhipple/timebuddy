@@ -5,14 +5,15 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	initializePage();
+	console.log("in the addactivitydata");
 })
 
-$(".button").click(submitClicked);	
 /*
  * Function that is called when the document is ready.
  */
 function initializePage() {
 	console.log("Javascript!");
+	$(".button").click(submitClicked);	
 }
 
 
