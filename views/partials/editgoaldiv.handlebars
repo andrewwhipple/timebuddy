@@ -1,0 +1,21 @@
+<div class="well well-sm activitydiv" id='{{activity}}'>
+	<div class = "well-text" id={{activity}}><div class="inline" id="activity">{{activity}}</div>: 
+	<div class="inline" id="target">{{goal}}</div> hrs/day
+	<button type="button" class="editGoalButton" id='editgoalbtn{{activity}}'>Edit Target</button>
+	<div class="goal"></div>
+
+	<div class='container editgoaldiv well' id='editgoaldiv{{activity}}'>
+		<form class ="inline editgoalform" role="form" id="editgoalform{{activity}}">
+			<div class="inline time form-group col-sm-">
+				<label class="control-label" for="text"> How much time do you want to spend on this per day? </label>
+				<input type="text" id="time" placeholder="0.00"></input>
+			</div>
+			<a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a>
+			<button type="button" class="cancelButton">Cancel Editing</button><br>
+			<button type="button" class="deleteGoalButton">Delete Target</button>
+		</form>
+	</div>
+</div>
+	
+</div>
+<!--<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> -->

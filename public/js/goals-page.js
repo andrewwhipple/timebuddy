@@ -5,13 +5,7 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	initializePage();
-	$('#addactivityform').hide();
-	$(".button").click(submitClicked);	
 
-	$("#submitBtn").click(submitClicked);
-	$("#addactivityformbtn").click(addactivityformbtn);
-	$(".editGoalButton").click(editGoalClicked);
-	
 })
 
 
@@ -21,6 +15,19 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript!");
+	$('#addactivityform').hide();
+	$('.editgoaldiv').hide();
+
+	$(".button").click(submitClicked);	
+
+	$("#submitBtn").click(submitClicked);
+	$("#addactivityformbtn").click(addactivityformbtn);
+	$("#addactivityformlabel").click(addactivityformbtn);
+	$(".editGoalButton").click(editGoalClicked);
+		
+	$(".deleteGoalButton").click(deleteGoalClicked);
+	$(".cancelButton").click(cancelClicked);
+	$(".submitGoalButton").click(submitGoalClicked);
 }
 
 
@@ -48,32 +55,20 @@ function submitClicked(e) {
 	if (name == "") {
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the name of an activity.");
+		$('#message').html("Please enter the name of a target.");
 		return;	
 	} else if(!hasTime){
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the amount of time you plan to spend on this activity.");
+		$('#message').html("Please enter the amount of time you plan to spend on this target.");
 		console.log("Problem yo");
 		return;
 	}
 	if ((name != "") && (target != "")) {
-		//$(".goalList").append('<div class="goal"><h4>' + name + ": " + target + '</h4> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>');
 		var parameters = {'activity': name, 'hours': 0, 'goal': target};
-		$.get('/addactivitydata', parameters, writeData);
-		//$(".editGoalButton").click(editGoalClicked);
-		//$(".deleteGoalButton").click(deleteGoalClicked);
-	
+		$.get('/addactivitydata', parameters, writeData);	
 	
 	}
-	
-	/*var newActivity = 
-	{
-		"activity": name,
-		"hours": 0,
-		"goal": target
-	};
-	data["activities"].push(newActivity);*/
 }
 
 function checkInput(time){
@@ -85,15 +80,40 @@ function checkInput(time){
 
 function writeData(results) {
 	console.log("STUFF WORKS YAY");
-	//$(".goalList").append('<div class="goal"><h4>' + results.activity + ": " + results.goal + ' hrs/week</h4> <button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> </div>');
 	
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html('Activity added successfully!');
+	$('#message').html(results['activity'] +' added successfully!');
 	
-	$(".goalList").append('<div class="well well-sm"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: <div class="inline" id="target">' + results.goal + '</div> hrs/day <button type="button" class="editGoalButton">Edit Target</button><div class="goal"></div></div>');
+	$(".goalList").append('<div class="well well-sm activitydiv" id="'+results['activity']+'"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: <div class="inline" id="target">' + results.goal + '</div> hrs/day <button type="button" class="editGoalButton" id="editgoalbtn'+ results['activity']+ '">Edit Target</button><div class="goal"></div>'
+			+ '	<div class="container editgoaldiv well" id="editgoaldiv'+ results['activity']+ '">'
+			+'<form class ="inline editgoalform" role="form" id="editgoalform'+ results['activity']+ '">'
+			+'<div class="inline time form-group col-sm-">'
+			+	'<label class="control-label" for="text"> How much time do you want to spend on this per day? </label>'
+			+	'<input type="text" id="time" placeholder="0.00"></input>'
+			+'</div>'
+			+'<a href="#"><button type="button" class="submitGoalButton submitBtn" >Submit</button></a>'
+			+'<button type="button" class="cancelButton">Cancel Editing</button><br>'
+			+'<button type="button" class="deleteGoalButton">Delete Target</button>'
+		+'</form>'
+	+'</div>');
+
 	console.log($(".goalList").length);
-	$(".editGoalButton").click(editGoalClicked);
+
+	$("#editgoalbtn"+results['activity']).click(editGoalClicked);
+	$("#editgoaldiv"+results['activity']).hide();
+
+	$("#target").val('');
+	$("#name").val('');
+
+	$( "#addactivityform" ).toggle(function() {
+		console.log("here1");
+	  $('#addActivity').hide();
+	}, function() {
+		console.log("here2");
+
+	  $('#addActivity').show();
+	});
 }
 
 
@@ -120,13 +140,22 @@ function deleteData(results) {
 function editGoalClicked(e) {
 	e.preventDefault();
 	console.log("CLICKED SON");
-	console.log($(this).closest(".well-text").length);
-	$('#editForm').remove();
 	
-	$(this).closest(".well-text").append('<form class ="inline" role="form" id="editForm"><div class="inline time form-group col-sm-"><label class="control-label" for="text"> How much time do you want to spend on this per day? </label><input type="text" id="time" placeholder="0.00"></input></div><a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a><button type="button" class="cancelButton">Cancel Editing</button><br><button type="button" class="deleteGoalButton">Delete Target</button></form>');
-	$(".deleteGoalButton").click(deleteGoalClicked);
-	$(".cancelButton").click(cancelClicked);
-	$(".submitGoalButton").click(submitGoalClicked);
+	var parentdiv = $(this).closest(".activitydiv");
+	var div = parentdiv.find(".editgoaldiv");
+	var form = parentdiv.find(".editgoalform");
+	
+	console.log(div);
+	console.log(form);
+
+	$( div ).toggle(function() {
+		console.log("here1");
+	  $(form).hide();
+	}, function() {
+		console.log("here2");
+	  $(form).show();
+	});
+
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number

@@ -13,7 +13,7 @@
 	
 	<div class='container'>
 		<a href='#' id='addactivityformbtn'><span class="glyphicon glyphicon-plus submitBtn"></span></a>
-		<label for="addactivityformbtn">Add New Target</label>
+		<label for="addactivityformbtn" id='addactivityformlabel'>Add New Target</label>
 	</div>
  	
 	
@@ -45,16 +45,7 @@
 	 -->
 	
 	{{#each activities}}
-	<div class="well well-sm">
-		<div class = "well-text" id={{activity}}><div class="inline" id="activity">{{activity}}</div>: 
-		<div class="inline" id="target">{{goal}}</div> hrs/day
-		<button type="button" class="editGoalButton">Edit Target</button>
-		<div class="goal"></div>
-	</div>
-		
-	</div>
-	<!--<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> -->
-	
+		{{> editgoaldiv}}
 	{{/each}}
 	</div>
 	
