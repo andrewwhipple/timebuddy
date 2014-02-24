@@ -15,4 +15,6 @@ exports.addActivity = function(req, res) {
 		}
 		res.send()
 	}
+	result = {"activity": req.query.activity, "goal": req.query.goal};
+	res.json(result);
 }

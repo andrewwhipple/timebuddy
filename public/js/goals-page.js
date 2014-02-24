@@ -159,7 +159,7 @@ function submitGoalClicked(e) {
 function updateGoal(results) {
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html(results['activity'] + ' changed from ' + results['oldTarget'] + 'hrs to ' + results['newTarget'] + 'hrs.');
+	$('#message').html(results['activity'] + ' changed to ' + results['newTarget'] + 'hrs.');
 	$('#editForm').remove();
 
 	var activitydiv = $("#"+results['activity']);

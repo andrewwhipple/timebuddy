@@ -6,7 +6,7 @@ exports.delete = function(req, res) {
 	models.Activity
 		.find({"activity": req.query.activity})
 		.remove()
-		.exec(afterUpdating);
+		.exec(afterRemoving);
 	function afterRemoving(err){
 		res.send()
 	}	
