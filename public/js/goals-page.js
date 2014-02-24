@@ -23,7 +23,8 @@ function initializePage() {
 	$("#submitBtn").click(submitClicked);
 	$("#addactivityformbtn").click(addactivityformbtn);
 	$("#addactivityformlabel").click(addactivityformbtn);
-	$(".editGoalButton").click(editGoalClicked);
+	//$(".editGoalButton").click(editGoalClicked);
+	$(".activityclickdiv").click(editGoalClicked);
 		
 	$(".deleteGoalButton").click(deleteGoalClicked);
 	$(".cancelButton").click(cancelClicked);
@@ -86,15 +87,18 @@ function writeData(results) {
 	$('#message').html(results['activity'] +' added successfully!');
 	
 	$(".goalList").append('<div class="well well-sm activitydiv" id="'+results['activity']+'"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: <div class="inline" id="target">' + results.goal + '</div> hrs/day <button type="button" class="editGoalButton" id="editgoalbtn'+ results['activity']+ '">Edit Target</button><div class="goal"></div>'
-			+ '	<div class="container editgoaldiv well" id="editgoaldiv'+ results['activity']+ '">'
+			+ '<div class="container editgoaldiv" id="editgoaldiv'+ results['activity']+ '">'
 			+'<form class ="inline editgoalform" role="form" id="editgoalform'+ results['activity']+ '">'
 			+'<div class="inline time form-group col-sm-">'
 			+	'<label class="control-label" for="text"> How much time do you want to spend on this per day? </label>'
-			+	'<input type="text" id="time" placeholder="0.00"></input>'
+			+	'<input type="text" id="time" class="form-control" placeholder="0.00"></input>'
+	
+			+'<a href="#"><button type="button" class="submitGoalButton submitBtn btn" >Submit</button></a>'
 			+'</div>'
-			+'<a href="#"><button type="button" class="submitGoalButton submitBtn" >Submit</button></a>'
-			+'<button type="button" class="cancelButton">Cancel Editing</button><br>'
-			+'<button type="button" class="deleteGoalButton">Delete Target</button>'
+			+'<div class = "form-group">'
+			+	'<button type="button" class="cancelButton btn btn-primary">Cancel Editing</button><br>'
+			+	'<button type="button" class="deleteGoalButton btn btn-primary">Delete Target</button>'
+			+'</div>'
 		+'</form>'
 	+'</div>');
 

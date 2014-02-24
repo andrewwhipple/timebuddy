@@ -1,21 +1,27 @@
 <div class="well well-sm activitydiv" id='{{activity}}'>
-	<div class = "well-text" id={{activity}}><div class="inline" id="activity">{{activity}}</div>: 
-	<div class="inline" id="target">{{goal}}</div> hrs/day
-	<button type="button" class="editGoalButton" id='editgoalbtn{{activity}}'>Edit Target</button>
-	<div class="goal"></div>
-
-	<div class='container editgoaldiv well' id='editgoaldiv{{activity}}'>
-		<form class ="inline editgoalform" role="form" id="editgoalform{{activity}}">
-			<div class="inline time form-group col-sm-">
-				<label class="control-label" for="text"> How much time do you want to spend on this per day? </label>
-				<input type="text" id="time" placeholder="0.00"></input>
-			</div>
-			<a href="#"><button type="button" class="submitGoalButton submitBtn">Submit</button></a>
-			<button type="button" class="cancelButton">Cancel Editing</button><br>
-			<button type="button" class="deleteGoalButton">Delete Target</button>
-		</form>
+	<div class="activityclickdiv">
+		<div class = "well-text" id={{activity}}><div class="inline" id="activity">{{activity}}</div>: 
+		<div class="inline" id="target">{{goal}}</div> hrs/day
+		<button type="button" class="editGoalButton btn btn-default" id='editgoalbtn{{activity}}'>Edit Target</button>
+		<div class="goal"></div>
 	</div>
 </div>
-	
+	<div class='container editgoaldiv' id='editgoaldiv{{activity}}'>
+		<form class ="editgoalform inline" role="form" id="editgoalform{{activity}}">
+			<div class=" time form-group col-sm-">
+				<label class="control-label" for="text"> How much time do you want to spend on this per day? </label>
+				<input type="text"  class="form-control" id="time" placeholder="0.00"></input>
+				<a href="#"><button type="button" class="submitGoalButton submitBtn btn">Submit</button></a>
+			</div>
+
+			<div class = "button-toolbar" role="toolbar">
+				<div class=" time form-group btn-group">
+					<button type="button" class="cancelButton btn btn-primary">Cancel Editing</button><br>
+					<button type="button" class="deleteGoalButton btn btn-primary">Delete Target</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
 </div>
 <!--<button type="button" class="editGoalButton"><a href="/editindividual">Edit Goal</a></button> -->
