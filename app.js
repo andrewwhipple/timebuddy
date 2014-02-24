@@ -52,8 +52,10 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/editgoals', editgoals.view);
 app.get('/editindividual', editindividualgoal.newTarget);
+app.get('/getindivdata', editindividualgoal.getTarget);
 app.get('/stats', viewstats.view);
 app.get('/addtime', addtime.addtime);
+app.get('/gettime', addtime.gettime);
 app.get('/addactivitydata', addactivitydata.addActivity);
 app.get('/deletegoal', deletegoal.delete);
 // Example route

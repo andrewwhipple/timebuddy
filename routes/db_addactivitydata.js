@@ -8,11 +8,12 @@ exports.addActivity = function(req, res) {
 	});
 	newActivity.save(afterSaving);
 	console.log(newActivity);
+	console.log("made it wheee");
 	function afterSaving(err){
 		if (err){ 
 			console.log(err);
 			res.send(500);
 		}
-		res.send()
+		res.send(newActivity)
 	}
 }
