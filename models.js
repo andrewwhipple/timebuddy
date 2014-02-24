@@ -6,4 +6,11 @@ var ActivitySchema = new Mongoose.Schema({
 	"goal": Number
 });
 
+var UserSchema = new Mongoose.Schema({
+	"name": String,
+	"activities": Array
+	
+});
+
 exports.Activity = Mongoose.model('Activity', ActivitySchema);
+exports.User = Mongoose.model('User', UserSchema);
