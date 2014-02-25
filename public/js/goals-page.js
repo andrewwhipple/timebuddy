@@ -103,6 +103,7 @@ function writeData(results) {
 		+'</form>'
 	+'</div>');
 
+
 	console.log($(".goalList").length);
 
 	$("#editgoalbtn"+results['activity']).click(editGoalClicked);
@@ -119,6 +120,8 @@ function writeData(results) {
 
 	  $('#addActivity').show();
 	});
+
+	window.location.reload(true)
 }
 
 
