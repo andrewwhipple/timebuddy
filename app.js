@@ -16,8 +16,10 @@ var viewstats = require('./routes/db_viewstats');
 var addtime = require('./routes/db_addtime');
 var addactivitydata = require('./routes/db_addactivitydata');
 var deletegoal = require('./routes/db_deletegoal');
+var user = require('./routes/user');
+var landing = require('./routes/landing');
 // Example route
-// var user = require('./routes/user');
+
 
 // Connect to the Mongo database, whether locally or on Heroku
 // MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
@@ -58,6 +60,9 @@ app.get('/addtime', addtime.addtime);
 app.get('/gettime', addtime.gettime);
 app.get('/addactivitydata', addactivitydata.addActivity);
 app.get('/deletegoal', deletegoal.delete);
+app.get('/user_login', user.login);
+app.get('/user_logout', user.logout);
+app.get('/landing', landing.index);
 // Example route
 // app.get('/users', user.list);
 
