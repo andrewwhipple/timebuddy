@@ -7,16 +7,24 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
+var mongoose = require('mongoose');
 
-var index = require('./routes/index');
-var editgoals = require('./routes/editgoals');
-var editindividualgoal = require('./routes/editindividualgoal');
-var viewstats = require('./routes/viewstats');
-var addtime = require('./routes/addtime');
-var addactivitydata = require('./routes/addactivitydata');
-var deletegoal = require('./routes/deletegoal');
+var index = require('./routes/db_index');
+var editgoals = require('./routes/db_editgoals');
+var editindividualgoal = require('./routes/db_editindividualgoal');
+var viewstats = require('./routes/db_viewstats');
+var addtime = require('./routes/db_addtime');
+var addactivitydata = require('./routes/db_addactivitydata');
+var deletegoal = require('./routes/db_deletegoal');
 // Example route
 // var user = require('./routes/user');
+
+// Connect to the Mongo database, whether locally or on Heroku
+// MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
+var local_database_name = 'timebuddy';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
 
 var app = express();
 

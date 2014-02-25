@@ -53,6 +53,7 @@ function submitClicked(e) {
 	var name = $("#name").val();
 	var target = $("#target").val();
 	var hasTime = checkInput(target);
+
 	if (name == "") {
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
