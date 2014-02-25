@@ -81,47 +81,12 @@ function checkInput(time){
 }
 
 function writeData(results) {
-	console.log("STUFF WORKS YAY");
+	window.location.reload(true)
 	
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
 	$('#message').html(results['activity'] +' added successfully!');
-	
-	$(".goalList").append('<div class="well well-sm activitydiv" id="'+results['activity']+'"> <div class = "well-text"><div class="inline" id="activity">' + results.activity + '</div>: <div class="inline" id="target">' + results.goal + '</div> hrs/day <button type="button" class="editGoalButton" id="editgoalbtn'+ results['activity']+ '">Edit Target</button><div class="goal"></div>'
-			+ '<div class="container editgoaldiv" id="editgoaldiv'+ results['activity']+ '">'
-			+'<form class ="inline editgoalform" role="form" id="editgoalform'+ results['activity']+ '">'
-			+'<div class="inline time form-group col-sm-">'
-			+	'<label class="control-label" for="text"> How much time do you want to spend on this per day? </label>'
-			+	'<input type="text" id="time" class="form-control" placeholder="0.00"></input>'
-	
-			+'<a href="#"><button type="button" class="submitGoalButton submitBtn btn" >Submit</button></a>'
-			+'</div>'
-			+'<div class = "form-group">'
-			+	'<button type="button" class="cancelButton btn btn-primary">Cancel Editing</button><br>'
-			+	'<button type="button" class="deleteGoalButton btn btn-primary">Delete Target</button>'
-			+'</div>'
-		+'</form>'
-	+'</div>');
 
-
-	console.log($(".goalList").length);
-
-	$("#editgoalbtn"+results['activity']).click(editGoalClicked);
-	$("#editgoaldiv"+results['activity']).hide();
-
-	$("#target").val('');
-	$("#name").val('');
-
-	$( "#addactivityform" ).toggle(function() {
-		console.log("here1");
-	  $('#addActivity').hide();
-	}, function() {
-		console.log("here2");
-
-	  $('#addActivity').show();
-	});
-
-	window.location.reload(true)
 }
 
 
