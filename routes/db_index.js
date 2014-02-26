@@ -2,27 +2,8 @@ var models = require('../models');
 
 exports.view = function(req, res){
 	var username = req.session.username;
-<<<<<<< HEAD
-	models.User
-		.find({name: username})
-		.exec(findActivities);
-	
-	function findActivities(err, user) {
-		if (err) {
-		
-			res.send(500);	
-		}
-		if (!user.length) {
-			console.log("No user!")	
-		} else {
-			console.log(user);
-		}
-		//renderActivities(user[0].activities);
-		
-=======
 	if (!req.session.username) {
 		res.redirect('/landing');	
->>>>>>> 17fc5a40ef25744750187168281aa9597554d60c
 	}
 	models.Activity
 		.find({"user": username})

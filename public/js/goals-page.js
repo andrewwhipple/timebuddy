@@ -105,7 +105,7 @@ function writeData(results) {
 function deleteGoalClicked(e) {
 	e.preventDefault();
 	console.log("Delete clicked!");
-	var name = $(this).closest(".well-text").attr('id');
+	var name = $(this).closest(".activitydiv").attr('id');
 	console.log(name);
 	var parameters = {'activity': name};
 	$.get('/printDatabase');
