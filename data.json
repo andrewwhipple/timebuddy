@@ -2,16 +2,19 @@
 		{
 			"activity": "facebook",
 			"hours": 0.5,
-			"goal" : 1
+			"goal" : 1,
+			"user" : "devTest"
 		},
 		{
 			"activity": "exercise",
 			"hours": 0.5,
-			"goal" : 1		
+			"goal" : 1,
+			"user" : "devTest"	
 		},
 		{
 			"activity": "homework",
 			"hours": 1,
-			"goal" : 3		
+			"goal" : 3,		
+			"user" : "devTest"
 		}
 	]
