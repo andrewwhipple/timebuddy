@@ -6,11 +6,13 @@ exports.addtime = function(req, res) {
 	var username = req.session.username;
 	var activity = req.query.activity;
 	console.log(activity + "/" + username);
+	
 	models.Activity
 		.where({'activity': activity})
 		.where({'user': username})
 		.update({'activity': activity, 'user': username}, {$inc:{'hours': req.query.time}})
 		.exec(afterUpdating);
+	
 	function afterUpdating(err, activity){
 		console.log("here's what I'm looking for");
 		console.log(activity);

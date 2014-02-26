@@ -6,6 +6,7 @@ exports.view = function(req, res){
 	if (!req.session.username) {
 		res.redirect('/landing');	
 	}
+	
 	models.Activity
 		.find({"user": username})
 		.sort('hours')

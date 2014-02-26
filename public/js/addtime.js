@@ -18,18 +18,36 @@ function printData(activities){
 
 function submitClicked(e){
 	e.preventDefault();
+
 	var activitydiv = $(this).closest(".activity");
 	var activity = $(activitydiv).attr('id');
-	var time = $(activitydiv).find("#time").val();
-	console.log(time);
-	console.log(activity);
-	var correctInput = checkInput(time);
-	if(!correctInput){
+	var timeinput = $(activitydiv).find("#time");
+	var time = timeinput.val();
+	var hoursspent = $(activitydiv).find("#hoursspent").val();
+
+	if(!validInput(time)){
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the time spent doing this activity.");
+		$('#message').html("Please enter the hours spent doing this activity.");
+		timeinput.val("");
 		return;
 	}
+
+	if($(this).attr("id") == 'minusBtn'){
+		time = -1 * time;
+	}
+
+	if(!withinRange(time, hoursspent)){
+		$('#message').removeClass();
+		$('#message').addClass("alert alert-warning");
+		$('#message').html("You can only spend between 0 and 24 hours per day on each activity. Please enter another number.");
+		timeinput.val("");
+		return;
+	}
+
+	console.log(time);
+	console.log(activity);
+
 	var parameters = {'activity': activity, 'time': time };
 	$.get("/addtime", parameters);
 	$.get("/gettime", parameters, success)
@@ -48,9 +66,23 @@ function success(results){
 	$(activitydiv).find("#progress_bar").css('width', (results['hours']/results['goal']*100)+'%');
 }
 
-function checkInput(time){
+
+function validInput(time){
 	if(time == "")
 		return false;
 	var regexp = /^[0-9]*(.)[0-9]*$/;
     return (time.search(regexp) >= 0) ? true : false;
+}
+
+function withinRange(time, hoursspent){
+	console.log ("hours spent: " + hoursspent);
+	var total = parseInt(time) + parseInt(hoursspent);
+	
+	console.log("total" + total);
+	console.log(parseInt(time) > 24);
+	console.log(total < 0);
+	if(total > 24 || total < 0)
+		return false;
+	else
+		return true;
 }
