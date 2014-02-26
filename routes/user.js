@@ -14,10 +14,12 @@ exports.login = function(req, res) {
   var username = req.query.username;
   console.log('username is: '+username);
   req.session.username = username;
+	res.redirect('/');
+
 
 
 	/*models.User.find({"name": username}).exec(afterQuery);
->>>>>>> 17fc5a40ef25744750187168281aa9597554d60c
+
 	
 	function afterQuery(err, user) {
 		if (err) res.send(500);
@@ -39,19 +41,17 @@ exports.login = function(req, res) {
 		} else {
 			console.log("This thingy here...");	
 		}
-<<<<<<< HEAD
-	}
 
-  // send them back to the homepage
-  res.redirect('/landing');
 =======
 	}*/
 
   // send them back to the homepage
   res.redirect('/');
+
 }
 
 exports.logout = function(req, res) {
   req.session.username = null;
+
   res.redirect('/landing');
 }
