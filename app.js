@@ -64,6 +64,7 @@ app.get('/deletegoal', deletegoal.delete);
 app.get('/user_login', user.login);
 app.get('/user_logout', user.logout);
 app.get('/landing', landing.index);
+app.get('/printDatabase', deletegoal.printDatabase)
 // Example route
 // app.get('/users', user.list);
 
