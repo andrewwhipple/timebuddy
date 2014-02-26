@@ -52,6 +52,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/getdata', index.getdata)
 app.get('/editgoals', editgoals.view);
 app.get('/editindividual', editindividualgoal.newTarget);
 app.get('/getindivdata', editindividualgoal.getTarget);

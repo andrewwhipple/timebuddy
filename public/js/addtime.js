@@ -3,12 +3,21 @@
 // Call this function when the page loads (the "ready" event)
 $(document).ready(function() {
 	console.log("javascript for recordactivity.js connected!");
+	$.get("/getdata", printData);
+	console.log("YOOHOO");
 	$(".submitBtn").click(submitClicked);	
 })
 
+function printData(activities){
+	for (var index in activities){
+  		var activity = activities[index];
+  		var activitydiv = $("#"+activity['activity']);
+  		$(activitydiv).find("#progress_bar").css('width', (activity['hours']/activity['goal']*100)+'%');
+  	}
+}
+
 function submitClicked(e){
 	e.preventDefault();
-	
 	var activitydiv = $(this).closest(".activity");
 	var activity = $(activitydiv).attr('id');
 	var time = $(activitydiv).find("#time").val();
@@ -22,7 +31,6 @@ function submitClicked(e){
 		return;
 	}
 	var parameters = {'activity': activity, 'time': time };
-	console.log("about to call funct");
 	$.get("/addtime", parameters);
 	$.get("/gettime", parameters, success)
 }
