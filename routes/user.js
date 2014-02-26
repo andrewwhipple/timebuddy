@@ -16,6 +16,38 @@ exports.login = function(req, res) {
   req.session.username = username;
 	res.redirect('/');
 
+
+
+	/*models.User.find({"name": username}).exec(afterQuery);
+
+	
+	function afterQuery(err, user) {
+		if (err) res.send(500);
+		if(!user.length) {
+			var newUser = new models.User({
+				"name": username,
+				"activities": []
+			});
+			newUser.save(afterSaving);
+			console.log(newUser);
+			function afterSaving(err){
+			if (err){ 
+				console.log(err);
+				res.send(500);
+			}
+			res.send()
+			}
+
+		} else {
+			console.log("This thingy here...");	
+		}
+
+=======
+	}*/
+
+  // send them back to the homepage
+  res.redirect('/');
+
 }
 
 exports.logout = function(req, res) {
