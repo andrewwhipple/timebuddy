@@ -3,8 +3,11 @@ var models = require('../models');
 exports.delete = function(req, res) {
 	// get a random palette from the top ones 
 	console.log("Delete goals linked!");
+	var activity = req.query.activity;
+	var user = req.session.username;
+	console.log(activity + " " + user);
 	models.Activity
-		.find({"activity": req.query.activity})
+		.find({"activity": activity, "user":user})
 		.remove()
 		.exec(afterRemoving);
 	function afterRemoving(err){
