@@ -1,35 +1,15 @@
 {{> header}}
 
-<!--THE POPUP CONFIRMATION DIALOG-->
-<div class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Record hours?</h4>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to add <label id='numhours'></label> to <label id='activitylabel'></label>></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Record Hours</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
 <div class="container">
+    <p><em>The app that lets you take control your time!</em></p>
 
 	<div class = 'container' id='message'/></div>
-
 	<div class='container'>
 		{{#if activities}}
 			{{#each activities}}
 			<div class="row activity well well-sm" id="{{activity}}">
 					<div class='well-text inline activityname'> {{activity}} </div>
-					<div  class='inline' id='timespent'> {{hours}} / {{goal}} hrs </div>
+					<div  class='inline' id='timespent'><em> {{hours}} / {{goal}} hrs </em></div>
 					<div class="progress">
 	  					<div id="progress_bar" class="progress-bar" role="progressbar">
 	  						</div>
