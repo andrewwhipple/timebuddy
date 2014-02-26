@@ -19,7 +19,7 @@ var deletegoal = require('./routes/db_deletegoal');
 var user = require('./routes/user');
 var landing = require('./routes/landing');
 // Example route
-// var user = require('./routes/user');
+
 
 // Connect to the Mongo database, whether locally or on Heroku
 // MAKE SURE TO CHANGE THE NAME FROM 'lab7' TO ... IN OTHER PROJECTS
@@ -52,6 +52,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/getdata', index.getdata)
 app.get('/editgoals', editgoals.view);
 app.get('/editindividual', editindividualgoal.newTarget);
 app.get('/getindivdata', editindividualgoal.getTarget);
@@ -63,6 +64,7 @@ app.get('/deletegoal', deletegoal.delete);
 app.get('/user_login', user.login);
 app.get('/user_logout', user.logout);
 app.get('/landing', landing.index);
+app.get('/printDatabase', deletegoal.printDatabase)
 // Example route
 // app.get('/users', user.list);
 

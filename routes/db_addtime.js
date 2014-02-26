@@ -3,9 +3,13 @@ var models = require('../models');
 exports.addtime = function(req, res) {
 	// get a random palette from the top ones 
 	console.log("Javascript for db_addtime.js linked!");
+	var username = req.session.username;
+	var activity = req.query.activity;
+	console.log(activity + "/" + username);
 	models.Activity
-		.find({"activity": req.query.activity})
-		.update({"activity": req.query.activity}, {$inc: {"hours": req.query.time}})
+		.where({'activity': activity})
+		.where({'user': username})
+		.update({'activity': activity, 'user': username}, {$inc:{'hours': req.query.time}})
 		.exec(afterUpdating);
 	function afterUpdating(err, activity){
 		console.log("here's what I'm looking for");
@@ -19,8 +23,11 @@ exports.addtime = function(req, res) {
 exports.gettime = function(req, res) {
 	// get a random palette from the top ones 
 	console.log("Javascript for db_addtime.js linked!");
+	var activity = req.query.activity;
+	var username = req.session.username;
 	models.Activity
-		.find({"activity": req.query.activity})
+		.where({'activity': activity})
+		.where({'user': username})
 		.exec(afterFinding);
 	function afterFinding(err, activity){
 		console.log("here's what I'm looking for");

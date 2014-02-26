@@ -108,7 +108,9 @@ function deleteGoalClicked(e) {
 	var name = $(this).closest(".well-text").attr('id');
 	console.log(name);
 	var parameters = {'activity': name};
+	$.get('/printDatabase');
 	$.get('/deletegoal', parameters, deleteData);
+	$.get('/printDatabase');
 	$(this).closest(".well-sm").remove();		
 }
 

@@ -10,6 +10,10 @@ $(document).ready(function() {
  */
 function initializePage() {
 	console.log("Javascript connected!");
-
+	$.get("/getData", printData)
 	$(".name").click(onNameClick);
+}
+
+function printData(activities){
+	print "ehlllllooo?"
 }

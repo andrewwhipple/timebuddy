@@ -3,7 +3,8 @@ var Mongoose = require('mongoose');
 var ActivitySchema = new Mongoose.Schema({
 	"activity": String,
 	"hours": Number,
-	"goal": Number
+	"goal": Number,
+	"user": String
 });
 
 var UserSchema = new Mongoose.Schema({
