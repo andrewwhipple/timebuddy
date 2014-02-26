@@ -15,9 +15,7 @@ exports.login = function(req, res) {
   console.log('username is: '+username);
   req.session.username = username;
 
-<<<<<<< HEAD
-	models.User.find({"name": username}).exec(afterQuery);
-=======
+
 	/*models.User.find({"name": username}).exec(afterQuery);
 >>>>>>> 17fc5a40ef25744750187168281aa9597554d60c
 	
@@ -51,15 +49,9 @@ exports.login = function(req, res) {
 
   // send them back to the homepage
   res.redirect('/');
->>>>>>> 17fc5a40ef25744750187168281aa9597554d60c
 }
 
 exports.logout = function(req, res) {
   req.session.username = null;
-
-<<<<<<< HEAD
-  res.redirect('/');
-=======
   res.redirect('/landing');
->>>>>>> 17fc5a40ef25744750187168281aa9597554d60c
 }
