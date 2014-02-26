@@ -8,6 +8,6 @@ exports.delete = function(req, res) {
 		.remove()
 		.exec(afterRemoving);
 	function afterRemoving(err){
-		res.send()
+		res.send(req.query.activity)
 	}	
  }

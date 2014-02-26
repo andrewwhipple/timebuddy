@@ -2,34 +2,30 @@ var models = require('../models');
 
 exports.addtime = function(req, res) {
 	// get a random palette from the top ones 
-	var result = { "message": "" , "activity": "" , "hours": 0, "goal": 0} ;
-	
-	console.log("Javascript linked!");
-	var activityToUpdate = req.query.activity;
-	var conditions = {"activity": activityToUpdate};
-	var newTime = req.query.time;
-	var update = {$inc:{"hours": newTime}};
-	var options = {multi: false};
-	models.Activity.update(conditions, update, options, afterUpdating);
-	/*models.Activity
+	console.log("Javascript for db_addtime.js linked!");
+	models.Activity
 		.find({"activity": req.query.activity})
-		.update({"hours": hours + req.query.time})
-		.exec(afterUpdating);*/
-	//not sure what was going on with result before...?
-	function afterUpdating(err){
-		if (err) res.send(500);
-		
+		.update({"activity": req.query.activity}, {$inc: {"hours": req.query.time}})
+		.exec(afterUpdating);
+	function afterUpdating(err, activity){
+		console.log("here's what I'm looking for");
+		console.log(activity);
+		//var result = { "message": "" , "activity": req.query.activity , "hours": parseFloat(activity[0]['hours']) + parseFloat(req.query.time), "goal": activity[0]['goal']} ;
+		//res.send(result)
+		res.send()
 	}	
-	result['message'] = "Time added!"
-	result['activity'] = activityToUpdate;
-	models.Activity.find({"activity": activityToUpdate}).exec(afterQuery);
-	function afterQuery(err, activity) {
-		if (err) res.send(500);
-		var newHours = activity[0].hours;
-		var goal = activity[0].goal;
-		console.log(newHours + " " + goal);
-		result['hours'] = newHours;
-		result['goal'] = goal;
-		res.json(result);	
-	}
-	 }
+ }
+
+exports.gettime = function(req, res) {
+	// get a random palette from the top ones 
+	console.log("Javascript for db_addtime.js linked!");
+	models.Activity
+		.find({"activity": req.query.activity})
+		.exec(afterFinding);
+	function afterFinding(err, activity){
+		console.log("here's what I'm looking for");
+		console.log(activity);
+		var result = { "message": "Time Added!" , "activity": req.query.activity , "hours": activity[0]['hours'], "goal": activity[0]['goal']} ;
+		res.send(result)
+	}	
+ }

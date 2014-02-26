@@ -9,7 +9,7 @@ exports.addActivity = function(req, res) {
 	};
 	data["activities"].push(newActivity);
 	
-	result = {"activity": newActivity.activity, "goal": newActivity.goal};
+	result = {"activity": newActivity.activity, "goal": newActivity.goal};	
 	res.json(result);
 	
 }

@@ -13,7 +13,6 @@ function submitClicked(e){
 	var activity = $(activitydiv).attr('id');
 	var time = $(activitydiv).find("#time").val();
 	console.log(time);
-
 	console.log(activity);
 	var correctInput = checkInput(time);
 	if(!correctInput){
@@ -22,14 +21,14 @@ function submitClicked(e){
 		$('#message').html("Please enter the time spent doing this activity.");
 		return;
 	}
-
-
 	var parameters = {'activity': activity, 'time': time };
-	$.get("/addtime", parameters, success);
-
+	console.log("about to call funct");
+	$.get("/addtime", parameters);
+	$.get("/gettime", parameters, success)
 }
 
 function success(results){
+	console.log(results);
 	var message = results['message'];
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
