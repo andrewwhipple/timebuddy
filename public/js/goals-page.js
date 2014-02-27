@@ -128,14 +128,20 @@ function editGoalClicked(e) {
 	var parentdiv = $(this).closest(".activitydiv");
 	var div = parentdiv.find(".editgoaldiv");
 	var form = parentdiv.find(".editgoalform");
-	var button = parentdiv.find(".editGoalButton");
-
+	
 	console.log(div);
 	console.log(form);
-	console.log( 'this will be the buttn');
-	console.log(button);
 
-	toggleEditGoalForm(div, form, button);
+	$( div ).toggle(function() {
+		console.log("here1");
+	  $(form).hide();
+	}, function() {
+		console.log("here2");
+	  $(form).show();
+	  div.find("#time").val("");
+	  console.log(div.find("#time"));
+	});
+
 	//append a form that asks for name and Target (hrs/week)
 	//add a submit button listener
 	//when submit button clicked, pluck out the number
@@ -176,12 +182,11 @@ function updateGoal(results) {
 
 	var div = activitydiv.find(".editgoaldiv");
 	var form = div.find(".editgoalform");
-	var button = div.find(".editGoalButton");
-
+	
 	console.log(div);
 	console.log(form);
 
-	toggleEditGoalForm(div, form, button);
+	toggleEditGoalForm(div, form);
 }
 
 function cancelClicked(e) {
@@ -191,15 +196,14 @@ function cancelClicked(e) {
 
 	var div = $(this).closest(".editgoaldiv");
 	var form = div.find(".editgoalform");
-	var button = div.find(".editGoalButton");
 	
 	console.log(div);
 	console.log(form);
 
-	toggleEditGoalForm(div, form, button);
+	toggleEditGoalForm(div, form);
 }
 
-function toggleEditGoalForm(div, form, button){
+function toggleEditGoalForm(div, form){
 
 
 	$( div ).toggle(function() {
