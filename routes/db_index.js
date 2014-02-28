@@ -32,3 +32,24 @@ exports.getdata = function(req, res) {
 		res.send(activities);
 	}	
  }
+
+exports.viewB = function(req, res){
+	var username = req.session.username;
+
+	if (!req.session.username) {
+		res.redirect('/landing');	
+	}
+	
+	models.Activity
+		.find({"user": username})
+		.sort('hours')
+		.exec(renderActivities);
+
+
+	
+	function renderActivities(err, activities){
+		console.log("herro rucy");
+		res.render('indexB', {'activities': activities});
+		console.log(activities);
+	}
+}
