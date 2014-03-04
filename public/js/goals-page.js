@@ -60,12 +60,20 @@ function submitClicked(e) {
 	if (name == "") {
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the name of a target.");
+		$('#message').show();
+		$('#message').html("Please enter the name of a target.<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 		return;	
 	} else if(!hasTime){
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the amount of time you plan to spend on this target.");
+		$('#message').show();
+		$('#message').html("Please enter the amount of time you plan to spend on this target.<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 		console.log("Problem yo");
 		return;
 	}
@@ -97,7 +105,11 @@ function writeData(results) {
 
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html(results['activity'] +' added successfully!');
+	$('#message').show();
+	$('#message').html(results['activity'] +' added successfully!' + "<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 	
 	toggleAddActivityForm();
 }
@@ -118,7 +130,11 @@ function deleteData(name) {
 	console.log("And now we're here!");
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html(name + ' removed successfully.');	
+	$('#message').show();
+	$('#message').html(name + ' removed successfully.' + "<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});	
 }
 
 function editGoalClicked(e) {
@@ -163,7 +179,11 @@ function submitGoalClicked(e) {
 	} else {
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the amount of time you plan to spend on this activity.");
+		$('#message').show();
+		$('#message').html("Please enter the amount of time you plan to spend on this activity.<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 		return;
 	}
 }
@@ -173,7 +193,11 @@ function updateGoal(results) {
 
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html(results['activity'] + ' changed to ' + results['newTarget'] + 'hrs.');
+	$('#message').show();
+	$('#message').html(results['activity'] + ' changed to ' + results['newTarget'] + 'hrs.' + "<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 	$('#editForm').remove();
 
 	var activitydiv = $("[id='"+results['activity']+"']");
