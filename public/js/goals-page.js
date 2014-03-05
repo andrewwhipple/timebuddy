@@ -100,6 +100,8 @@ function writeData(results) {
 	$('#message').html(results['activity'] +' added successfully!');
 	
 	toggleAddActivityForm();
+
+	ga("send", "event", "targets", "added");
 }
 
 function deleteGoalClicked(e) {
@@ -118,7 +120,9 @@ function deleteData(name) {
 	console.log("And now we're here!");
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html(name + ' removed successfully.');	
+	$('#message').html(name + ' removed successfully.');
+
+	ga("send", "event", "targets", "deleted");	
 }
 
 function editGoalClicked(e) {
@@ -187,6 +191,8 @@ function updateGoal(results) {
 	console.log(form);
 
 	toggleEditGoalForm(div, form);
+
+	ga("send", "event", "targets", "updated");
 }
 
 function cancelClicked(e) {

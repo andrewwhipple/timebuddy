@@ -64,6 +64,8 @@ function success(results){
 	console.log(activitydiv);
 	$(activitydiv).find("#timespent").text(results['hours'] +" / "+ results['goal'] + " hrs");
 	$(activitydiv).find("#progress_bar").css('width', (results['hours']/results['goal']*100)+'%');
+
+	ga("send", "event", "targets", "timeadded");
 }
 
 
