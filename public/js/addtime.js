@@ -6,6 +6,7 @@ $(document).ready(function() {
 	$.get("/getdata", printData);
 	console.log("YOOHOO");
 	$(".submitBtn").click(submitClicked);	
+	$("#time").keydown(keyClicked);
 })
 
 function printData(activities){
@@ -14,6 +15,46 @@ function printData(activities){
   		var activitydiv = $("#"+activity['activity']);
   		$(activitydiv).find("#progress_bar").css('width', (activity['hours']/activity['goal']*100)+'%');
   	}
+}
+
+function keyClicked(e) {
+	console.log("Got into the keyClicked");
+	var keycode = (event.keyCode ? event.keyCode : event.which);
+	if(keycode == '13'){
+		e.preventDefault();
+		console.log('You pressed a "enter" key in textbox');		var activitydiv = $(this).closest(".activity");
+	var activity = $(activitydiv).attr('id');
+	var timeinput = $(activitydiv).find("#time");
+	var time = timeinput.val();
+	var hoursspent = $(activitydiv).find("#hoursspent").val();
+
+	if(!validInput(time)){
+		$('#message').removeClass();
+		$('#message').addClass("alert alert-warning");
+		$('#message').html("Please enter the hours spent doing this activity.");
+		timeinput.val("");
+		return;
+	}
+
+
+
+	if(!withinRange(time, hoursspent)){
+		$('#message').removeClass();
+		$('#message').addClass("alert alert-warning");
+		$('#message').html("You can only spend between 0 and 24 hours per day on each activity. Please enter another number.");
+		timeinput.val("");
+		return;
+	}
+
+	console.log(time);
+	console.log(activity);
+
+	var parameters = {'activity': activity, 'time': time };
+	$.get("/addtime", parameters);
+	$.get("/gettime", parameters, success)
+	}
+ 
+	
 }
 
 function submitClicked(e){
@@ -28,7 +69,11 @@ function submitClicked(e){
 	if(!validInput(time)){
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("Please enter the hours spent doing this activity.");
+		$('#message').show();
+		$('#message').html("Please enter the hours spent doing this activity. <button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 		timeinput.val("");
 		return;
 	}
@@ -40,7 +85,11 @@ function submitClicked(e){
 	if(!withinRange(time, hoursspent)){
 		$('#message').removeClass();
 		$('#message').addClass("alert alert-warning");
-		$('#message').html("You can only spend between 0 and 24 hours per day on each activity. Please enter another number.");
+		$('#message').show();
+		$('#message').html("You can only spend between 0 and 24 hours per day on each activity. Please enter another number.<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 		timeinput.val("");
 		return;
 	}
@@ -58,7 +107,11 @@ function success(results){
 	var message = results['message'];
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-	$('#message').html(message);
+	$('#message').show();
+	$('#message').html(message + "<button type='button' class='close'>&times;</button>");
+		$('.close').click(function () {
+    		$('#message').hide();
+		});
 
 	var activitydiv = $("#"+results['activity']);
 	console.log(activitydiv);
