@@ -1,7 +1,7 @@
 var models = require('../models');
 
 exports.view = function(req, res){
-	ga("send", "event", "stats", "viewed");
+	//ga("send", "event", "stats", "viewed");
 
 	var username = req.session.username;
 	if (!req.session.username) {

@@ -1,7 +1,7 @@
 var models = require('../models');
 
 exports.addtime = function(req, res) {
-	ga("send", "event", "targetpage", "viewed");
+	//ga("send", "event", "targetpage", "viewed");
 
 	// get a random palette from the top ones 
 	console.log("Javascript for db_addtime.js linked!");
