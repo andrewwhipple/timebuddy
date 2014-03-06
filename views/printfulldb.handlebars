@@ -1,0 +1,65 @@
+
+
+<div class="container">
+
+
+
+
+	<div class = 'container' id='message'/></div>
+	<div class='container'>
+		{{#if activities}}
+			{{#each activities}}
+			<div class="row activity well well-sm" id="{{activity}}">
+					<div class='well-text inline activityname'> {{activity}} </div>
+					<div  class='inline' id='username'><em> {{user}} </em></div>
+					
+
+			</div>
+			{{/each}}
+		{{else}}
+			<div class ='container'>
+				You haven't added any activity targets. <a href="/editgoals">Start using TimeBuddy!</a>
+			</div>
+		{{/if}}
+	</div>
+</div>
+
+
+<!--
+		<div class = "well-text"> {{activity}} </div>
+		<div> {{hours}} / {{goal}} </div>
+		<div class='addtimediv'>
+			<form> 
+				<input type="text" id="time" value="00:00" data-format="hh:mm" class="input-small">
+				<a href="#" class="btn btn-mini submitBtn"><i class="icon-plus"></i></a>
+			</form>
+		</div> 
+-->
+
+
+
+<!--
+
+	<table class= "table">
+		<tr> <th> Activity </th> <th> Today (hrs) </th> <th> Goal (hrs) </th>
+		
+		{{#each activities}}
+		<tr> <td> {{activity}} </td> <td> {{hours}} </td> <td> {{goal}}</td>
+		{{/each}}
+
+	</table>
+</div>
+
+
+
+This is for progress bar if we want to have it displayed next to each item...still need to figure that out. Also want to add "Add activity" Button
+
+				<div class="progress">
+				  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+				    <span class="sr-only">60% Complete</span>
+				  </div>
+				</div>
+-->
+
+	
+</html>
