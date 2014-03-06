@@ -113,8 +113,10 @@ function writeData(results) {
 	
 	toggleAddActivityForm();
 	var user = req.session.username;
+	var label = "B" + user;
+	console.log(label);
 	
-	ga("send", "event", "targets", "added", "B" + user);
+	ga("send", "event", "targets", "added", label);
 }
 
 function deleteGoalClicked(e) {
