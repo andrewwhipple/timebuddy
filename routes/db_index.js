@@ -16,7 +16,7 @@ exports.view = function(req, res){
 	
 	function renderActivities(err, activities){
 		console.log("herro rucy");
-		res.render('index', {'activities': activities}, username);
+		res.render('index', {'activities': activities});
 		console.log(activities);
 	}
 }
