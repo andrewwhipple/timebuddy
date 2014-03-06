@@ -112,7 +112,7 @@ function writeData(results) {
 		});
 	
 	toggleAddActivityForm();
-	var user = req.session.username;
+	//var user = req.session.username;
 	var label = "B" + user;
 	console.log(label);
 	
