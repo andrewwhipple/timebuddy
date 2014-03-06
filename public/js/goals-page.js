@@ -112,9 +112,7 @@ function writeData(results) {
 		});
 	
 	toggleAddActivityForm();
-	//var user = req.session.username;
-	var label = "A" + user;
-	console.log(label);
+	
 
 	ga("send", "event", "targets", "added", "A");
 }
