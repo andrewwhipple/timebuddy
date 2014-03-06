@@ -113,7 +113,7 @@ function writeData(results) {
 	
 	toggleAddActivityForm();
 
-	ga("send", "event", "targets", "added");
+	ga("send", "event", "targets", "added", "A");
 }
 
 function deleteGoalClicked(e) {
