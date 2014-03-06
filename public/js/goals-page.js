@@ -116,7 +116,7 @@ function writeData(results) {
 	var label = "A" + user;
 	console.log(label);
 
-	ga("send", "event", "targets", "added", label);
+	ga("send", "event", "targets", "added", "A");
 }
 
 function deleteGoalClicked(e) {
