@@ -112,8 +112,9 @@ function writeData(results) {
 		});
 	
 	toggleAddActivityForm();
+	var user = req.session.username;
 	
-	ga("send", "event", "targets", "added", "B");
+	ga("send", "event", "targets", "added", "B" + user);
 }
 
 function deleteGoalClicked(e) {
