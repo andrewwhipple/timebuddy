@@ -2,13 +2,18 @@
 <div class="container">
 
 <h1>View Stats</h1>
-
+	
+	{{#if nAct}}
 	<div id="chart_div" style="width: 100%; height: 100%;"></div>
-		
+	{{else}}
+	<div class="container">
+		<p> You haven't added any activities yet! <a href="/editgoals">Why don't you go add some?</a></p>
+		</div>
+		{{/if}}	
 	<!--{{> homebtn}}-->
 </div>
 
-
+	
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
@@ -25,7 +30,7 @@
         var options = {
           title: 'Time Statistics',
           hAxis: {title: 'Activity', titleTextStyle: {color: 'red'}},
-		  vAxis: {title: 'Hours per Week', titleTextStyle: {color: 'red'}},
+		  vAxis: {title: 'Hours per day', titleTextStyle: {color: 'red'}},
 		  legend: {position: "bottom"},
 		  animation: {
 			  duration: 100,

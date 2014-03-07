@@ -13,7 +13,9 @@ exports.view = function(req, res){
 		.exec(renderActivities);
 
 	function renderActivities(err, activities){
-		res.render('viewstats.handlebars', {'activities': activities});
+		var nAct = false;
+		if (activities.length > 0) nAct = true;
+		res.render('viewstats.handlebars', {'activities': activities, 'nAct': nAct});
 		console.log(activities);
 	}
 };

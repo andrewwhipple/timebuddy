@@ -52,7 +52,7 @@ if ('development' == app.get('env')) {
 }
 
 // Add routes here
-app.get('/', index.view);
+app.get('/', index.viewB);
 app.get('/getdata', index.getdata)
 app.get('/editgoals', editgoals.view);
 app.get('/editindividual', editindividualgoal.newTarget);
@@ -66,7 +66,7 @@ app.get('/user_login', user.login);
 app.get('/user_logout', user.logout);
 app.get('/landing', landing.index);
 app.get('/printDatabase', deletegoal.printDatabase)
-app.get('/indexB', index.viewB);
+app.get('/indexB', index.view);
 app.get('/printfulldb', printfulldb.view);
 // Example route
 // app.get('/users', user.list);
