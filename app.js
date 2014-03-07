@@ -18,6 +18,7 @@ var addactivitydata = require('./routes/db_addactivitydata');
 var deletegoal = require('./routes/db_deletegoal');
 var user = require('./routes/user');
 var landing = require('./routes/landing');
+var printfulldb = require('./routes/printfulldb');
 // Example route
 
 
@@ -66,6 +67,7 @@ app.get('/user_logout', user.logout);
 app.get('/landing', landing.index);
 app.get('/printDatabase', deletegoal.printDatabase)
 app.get('/indexB', index.viewB);
+app.get('/printfulldb', printfulldb.view);
 // Example route
 // app.get('/users', user.list);
 

@@ -16,7 +16,7 @@ function initializePage() {
 	$('.editgoaldiv').hide();
 
 
-	$("#submitBtn").click(submitClicked);
+	$("#submitAddActivity").click(submitNewActivityClicked);
 	$("#addactivityformbtn").click(addactivityformbtn);
 	$("#addactivityformlabel").click(addactivityformbtn);
 	//$(".editGoalButton").click(editGoalClicked);
@@ -48,7 +48,7 @@ function toggleAddActivityForm(){
 	});
 }
 
-function submitClicked(e) {
+function submitNewActivityClicked(e) {
 	console.log("CLICKED");
 	e.preventDefault();
 	var name = $("#name").val();
@@ -113,8 +113,8 @@ function writeData(results) {
 	
 	toggleAddActivityForm();
 	
-
-	ga("send", "event", "targets", "added", "A");
+	
+	ga("send", "event", "targets", "added", "B");
 }
 
 function deleteGoalClicked(e) {
@@ -133,15 +133,16 @@ function deleteData(name) {
 	console.log("And now we're here!");
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
-
-	ga("send", "event", "targets", "deleted");	
-
+	
+	
 	$('#message').show();
 	$('#message').html(name + ' removed successfully.' + "<button type='button' class='close'>&times;</button>");
 		$('.close').click(function () {
     		$('#message').hide();
 		});	
-
+		
+	ga("send", "event", "targets", "deleted");	
+	
 }
 
 function editGoalClicked(e) {
@@ -218,7 +219,7 @@ function updateGoal(results) {
 	console.log(form);
 
 	toggleEditGoalForm(div, form);
-
+	
 	ga("send", "event", "targets", "updated");
 }
 

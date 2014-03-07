@@ -16,7 +16,7 @@ exports.view = function(req, res){
 	
 	function renderActivities(err, activities){
 		console.log("herro rucy");
-		res.render('index', {'activities': activities});
+		res.render('index', {'activities': activities, 'user': username});
 		console.log(activities);
 	}
 }
@@ -49,7 +49,7 @@ exports.viewB = function(req, res){
 	
 	function renderActivities(err, activities){
 		console.log("herro rucy");
-		res.render('indexB', {'activities': activities});
+		res.render('indexB', {'activities': activities, 'user': username});
 		console.log(activities);
 	}
 }
