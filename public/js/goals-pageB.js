@@ -19,8 +19,8 @@ function initializePage() {
 	$("#submitAddActivity").click(submitNewActivityClicked);
 	$("#addactivityformbtn").click(addactivityformbtn);
 	$("#addactivityformlabel").click(addactivityformbtn);
-	//$(".editGoalButton").click(editGoalClicked);
-	$(".activityclickdiv").click(editGoalClicked);
+	$(".editGoalButton").click(editGoalClicked);
+	//$(".activityclickdiv").click(editGoalClicked);
 		
 	$(".deleteGoalButton").click(deleteGoalClicked);
 	$(".cancelButton").click(cancelClicked);
