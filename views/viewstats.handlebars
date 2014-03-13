@@ -5,6 +5,11 @@
 	
 	{{#if nAct}}
 	<div id="chart_div" style="width: 100%; height: 100%;"></div>
+	<br>
+	<br>
+	<br>
+
+	<div id="pieChart" style="width: 100%; height: 100%;"></div>
 	{{else}}
 	<div class="container">
 		<p> You haven't added any activities yet! <a href="/editgoals">Why don't you go add some?</a></p>
@@ -14,34 +19,50 @@
 </div>
 
 	
+	
 	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
-        var data = google.visualization.arrayToDataTable([
+        var pieData = google.visualization.arrayToDataTable([
+          ['Activity','Actual'],
+          {{#each activities}}
+			  ['{{activity}}', {{hours}}],
+			  
+		  {{/each}}
+        ]);
+		
+        var barData = google.visualization.arrayToDataTable([
           ['Activity', 'Target', 'Actual'],
           {{#each activities}}
 			  ['{{activity}}', {{goal}}, {{hours}}],
 			  
 		  {{/each}}
         ]);
-
-        var options = {
-          title: 'Time Statistics',
+		
+        var barOptions = {
+          title: 'Target vs Actual Hours Spent',
           hAxis: {title: 'Activity', titleTextStyle: {color: 'red'}},
 		  vAxis: {title: 'Hours per day', titleTextStyle: {color: 'red'}},
 		  legend: {position: "bottom"},
 		  animation: {
-			  duration: 100,
+			  duration: 1000,
 			  easing: "in",
 			
 		  },
+		  colors: ['blue', 'red'],
 		  dataOpacity: 0.8,
         };
+		var pieOptions = {
+			title: 'Percentage Of Your (Reported) Day Spent On Activities'
+			
+		};
 
-        var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
+        var bar = new google.visualization.BarChart(document.getElementById('chart_div'));
+		var pie = new google.visualization.PieChart(document.getElementById('pieChart'));
+        bar.draw(barData, barOptions);
+		pie.draw(pieData, pieOptions);
       }
     </script>
 	<script>
