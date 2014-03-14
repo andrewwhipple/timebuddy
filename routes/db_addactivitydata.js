@@ -19,7 +19,6 @@ exports.addActivity = function(req, res) {
 			console.log(err);
 			res.send(500);
 		}
-<<<<<<< HEAD
 		res.json(newActivity)
 		//result = {"activity": req.query.activity, "goal": req.query.goal};
 
@@ -28,12 +27,5 @@ exports.addActivity = function(req, res) {
 	result = {"activity": req.query.activity, "goal": req.query.goal};
 
 	res.json(result);
-=======
-		//res.send(newActivity)
-	}
-	result = {"activity": req.query.activity, "goal": req.query.goal};
-
-		res.json(result);
 	console.log("going back");
->>>>>>> 08d69531f464c6552d31ce83bbca7ef30b761951
 }
