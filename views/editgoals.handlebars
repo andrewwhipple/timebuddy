@@ -48,10 +48,21 @@
 		{{/each}}
 	
 	 -->
-	
+	{{#if activities}}
 	{{#each activities}}
 		{{> editgoaldiv}}
 	{{/each}}
+	
+	{{else}}
+		<div class="container">
+		<br>
+		Just click that plus button and enter an activity you plan to do.
+		<br>
+		<br>
+		Then enter how long you plan to do it per day!
+		</div>
+	
+	{{/if}}
 	</div>
 	
 	<div class='container' id='message'>
