@@ -112,7 +112,9 @@ function writeData(results) {
 		});
 	
 	toggleAddActivityForm();
-	
+	//$('.goalList').append('<div class="container activitydiv well-sm well" id="' + results['activity'] + '"><div class="" id="' + results['activity'] + '"><div class="activityclickdiv"><div class="inline well-text" id=" ' + results['activity'] +'"><em><strong>' + results['activity'] +'</strong></em></div> <div class="inline" id="target"> ' + results['goal'] +'</div> hrs/day<button type="button" class="editGoalButton btn-xs btn-primary" id="editgoalbtn' + results['activity'] +'"><span class="glyphicon glyphicon-edit"></span></button></div></div><div class="container editgoaldiv" id="' + results['activity'] +'"><form class ="editgoalform inline" role="form" id="editgoalform'+ results['activity'] +'"><div class=" time form-group col-sm-"><label class="control-label" for="text"> How much time do you want to spend on this per day? </label><input type="text"  class="form-control" id="time" placeholder="0.00"></input><div class="btn-group"><a href="#"><button type="button" class="submitGoalButton submitBtn btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Submit</button></a><button type="button" class="cancelButton btn"><span class="glyphicon glyphicon-remove"></span> Cancel </button><br></div></div><div class = "button-toolbar" role="toolbar"><div class=" time form-group btn-group"><button type="button" class="deleteGoalButton btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Delete Target</button></div></div></form></div></div><div>');
+
+	//$('.editgoaldiv').hide();
 
 	ga("send", "event", "targets", "added", "A");
 }

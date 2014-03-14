@@ -19,7 +19,7 @@ exports.addActivity = function(req, res) {
 			console.log(err);
 			res.send(500);
 		}
-		res.send(newActivity)
+		//res.send(newActivity)
 	}
 	result = {"activity": req.query.activity, "goal": req.query.goal};
 
