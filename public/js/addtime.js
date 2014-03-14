@@ -10,9 +10,11 @@ $(document).ready(function() {
 })
 
 function printData(activities){
+	console.log("in printdata function");
 	for (var index in activities){
   		var activity = activities[index];
   		var activitydiv = $("#"+activity['activity']);
+  		$(activitydiv).find("#timespent").text(results['hours'] +" / "+ results['goal'] + " hrs");	
   		$(activitydiv).find("#progress_bar").css('width', (activity['hours']/activity['goal']*100)+'%');
   	}
 }
@@ -22,7 +24,9 @@ function keyClicked(e) {
 	var keycode = (event.keyCode ? event.keyCode : event.which);
 	if(keycode == '13'){
 		e.preventDefault();
-		console.log('You pressed a "enter" key in textbox');		var activitydiv = $(this).closest(".activity");
+		console.log('You pressed a "enter" key in textbox');		
+
+	var activitydiv = $(this).closest(".activity");
 	var activity = $(activitydiv).attr('id');
 	var timeinput = $(activitydiv).find("#time");
 	var time = timeinput.val();
@@ -50,7 +54,7 @@ function keyClicked(e) {
 	console.log(activity);
 
 	var parameters = {'activity': activity, 'time': time };
-	$.get("/addtime", parameters);
+	$.get("/addtime", parameters, success);
 	$.get("/gettime", parameters, success)
 	}
  
@@ -94,16 +98,13 @@ function submitClicked(e){
 		return;
 	}
 
-	console.log(time);
-	console.log(activity);
-
 	var parameters = {'activity': activity, 'time': time };
-	$.get("/addtime", parameters);
+	$.get("/addtime", parameters, success);
 	$.get("/gettime", parameters, success)
 }
 
 function success(results){
-	console.log(results);
+	console.log("in success function");
 	var message = results['message'];
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");

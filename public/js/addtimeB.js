@@ -13,6 +13,7 @@ function printData(activities){
 	for (var index in activities){
   		var activity = activities[index];
   		var activitydiv = $("#"+activity['activity']);
+  		$(activitydiv).find("#timespent").text(results['hours'] +" / "+ results['goal'] + " hrs");
   		$(activitydiv).find("#progress_bar").css('width', (activity['hours']/activity['goal']*100)+'%');
   	}
 }
@@ -94,17 +95,13 @@ function submitClicked(e){
 		timeinput.val("");
 		return;
 	}
-
-	console.log(time);
-	console.log(activity);
-
 	var parameters = {'activity': activity, 'time': time };
 	$.get("/addtime", parameters);
 	$.get("/gettime", parameters, success)
 }
 
 function success(results){
-	console.log(results);
+	console.log("in success function in addtimeB");
 	var message = results['message'];
 	$('#message').removeClass();
 	$('#message').addClass("alert alert-success");
@@ -116,6 +113,8 @@ function success(results){
 
 	var activitydiv = $("#"+results['activity']);
 	console.log(activitydiv);
+	var timespent = $(activitydiv).find("#timespent");
+	console.log(timespent);
 	$(activitydiv).find("#timespent").text(results['hours'] +" / "+ results['goal'] + " hrs");
 	$(activitydiv).find("#progress_bar").css('width', (results['hours']/results['goal']*100)+'%');
 	ga("send", "event", "targets", "timeadded");
